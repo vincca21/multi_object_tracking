@@ -2,6 +2,7 @@
 """Functions for tracking multiple objects in a video."""
 import argparse
 import time
+
 import cv2
 import imutils
 from imutils.video import VideoStream
