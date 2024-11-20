@@ -1,10 +1,10 @@
 # multi_obj_track.py
 """Functions for tracking multiple objects in a video."""
-from imutils.video import VideoStream
 import argparse
-import imutils
 import time
 import cv2
+import imutils
+from imutils.video import VideoStream
 
 # Construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -14,16 +14,16 @@ args = vars(ap.parse_args())
 
 # Initialize directory to map tracker names to Opencv funcs
 OPENCV_OBJECT_TRACKERS = {
-    "csrt": cv2.TrackerCSRT_create,
+    "csrt": cv2.legacy.TrackerCSRT_create,
     "kcf": cv2.TrackerKCF_create,
-    "boosting": cv2.TrackerBoosting_create,
-    "mil": cv2.TrackerMIL_create,
-    "tld": cv2.TrackerTLD_create,
-    "medianflow": cv2.TrackerMedianFlow_create,
-    "mosse": cv2.TrackerMOSSE_create
+    "mil": cv2.legacy.TrackerMIL_create,
+    "tld": cv2.legacy.TrackerTLD_create,
+    "medianflow": cv2.legacy.TrackerMedianFlow_create,
+    "mosse": cv2.legacy.TrackerMOSSE_create
 }
-# initialize multi-object tracker
-trackers = cv2.MultiTracker_create()
+
+# Initialize the multi-object tracker
+trackers = cv2.legacy.MultiTracker_create()
 
 # If a video path was not supplied, grab the reference to the webcam
 if not args.get("video", False):
